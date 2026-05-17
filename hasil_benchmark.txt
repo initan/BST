@@ -1,0 +1,63 @@
+=============================================================
+ QA TESTER - Analisis Performa Struktur Data
+ Tim TK-W10-S29-R0  |  Anggota 5: QA & Analis Performa
+=============================================================
+
+============================================================
+ UJI FUNGSIONAL - BST (20 data sampel)
+============================================================
+Total node di tree (inorder count): 20
+Cari 40 -> true (harus true)
+Cari 41 -> false (harus false)
+Setelah delete 30, total node: 19 (harus 19)
+Setelah delete root (50), total node: 18 (harus 18)
+
+============================================================
+ UJI FUNGSIONAL - HashTable Mahasiswa (15 data)
+============================================================
+Jumlah mahasiswa: 15
+Cari NIM 20240005 -> Student ID: 20240005, Name: Fajar
+Cari NIM 99999999 -> TIDAK ADA (benar)
+Hapus NIM 20240003 -> berhasil
+Jumlah setelah hapus: 14
+
+============================================================
+ UJI FUNGSIONAL - Graph Navigasi (5 node A..E)
+============================================================
+BFS reachable dari A: 5 node
+DFS reachable dari A: 5 node
+Dijkstra A -> E: jarak total = 10 (ekspektasi 10 via A-C-B-D-E: 2+1+5+2)
+
+============================================================
+ BENCHMARK SKALA KECIL (sesuai instruksi 10-20 data)
+============================================================
+BST   n=10     insert=2.80 µs    search(N)=2.70 µs    inorder=1.50 µs    delete=2.10 µs    hits=5 nodes=10
+HASH  n=10     add=95.20 µs   search(N)=4.50 µs    delete=4.30 µs    found=5 removed=10
+GRAPH n=10     build=74.90 µs   BFS=32.30 µs   DFS=11.30 µs   Dijkstra=81.00 µs   bfs=10 dfs=10 dist0->9=19
+BST   n=20     insert=4.50 µs    search(N)=5.00 µs    inorder=1.10 µs    delete=3.90 µs    hits=10 nodes=18
+HASH  n=20     add=48.20 µs   search(N)=5.00 µs    delete=6.70 µs    found=10 removed=20
+GRAPH n=20     build=56.10 µs   BFS=72.40 µs   DFS=16.80 µs   Dijkstra=264.60 µs  bfs=20 dfs=20 dist0->19=35
+
+============================================================
+ BENCHMARK SKALA MENENGAH (perbandingan pertumbuhan)
+============================================================
+BST   n=100    insert=117.50 µs  search(N)=77.20 µs   inorder=26.20 µs   delete=41.40 µs   hits=50 nodes=93
+HASH  n=100    add=365.80 µs  search(N)=18.80 µs   delete=65.00 µs   found=50 removed=100
+GRAPH n=100    build=501.80 µs  BFS=153.90 µs  DFS=69.70 µs   Dijkstra=442.60 µs  bfs=100 dfs=100 dist0->99=39
+BST   n=1000   insert=187.80 µs  search(N)=148.90 µs  inorder=18.00 µs   delete=163.70 µs  hits=500 nodes=938
+HASH  n=1000   add=1.31 ms     search(N)=1.27 ms     delete=501.70 µs  found=500 removed=1000
+GRAPH n=1000   build=455.90 µs  BFS=1.05 ms     DFS=666.40 µs  Dijkstra=17.51 ms    bfs=1000 dfs=1000 dist0->999=85
+BST   n=10000  insert=3.76 ms     search(N)=2.94 ms     inorder=807.10 µs  delete=1.56 ms     hits=5000 nodes=9533
+HASH  n=10000  add=7.38 ms     search(N)=785.60 µs  delete=2.29 ms     found=5000 removed=10000
+GRAPH n=10000  build=3.29 ms     BFS=11.31 ms    DFS=10.12 ms    Dijkstra=15.77 ms    bfs=10000 dfs=10000 dist0->9999=91
+
+============================================================
+ RINGKASAN KOMPLEKSITAS TEORITIS
+============================================================
+BST  insert/search/delete : O(log n) rata-rata, O(n) terburuk (skewed)
+BST  inorder traversal    : O(n)
+Hash add/search/delete    : O(1) rata-rata, O(n) terburuk (collision)
+Graph BFS / DFS           : O(V + E)
+Graph Dijkstra (PQ)       : O((V + E) log V)
+
+Selesai. Salin output di atas ke laporan jika diperlukan.
