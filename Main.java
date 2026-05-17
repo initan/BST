@@ -8,7 +8,7 @@ public class Main {
   // Objek dari tiap modul
   static BinarySearchTree bst = new BinarySearchTree();
   static HashTableManagement htm = new HashTableManagement();
-  // static Graph graph = new Graph();
+  static NavigasiGraph graph = new NavigasiGraph();
 
   public static void main(String[] args) {
 
@@ -169,7 +169,8 @@ public class Main {
       System.out.println("1. Tambah Jalur");
       System.out.println("2. BFS");
       System.out.println("3. DFS");
-      System.out.println("4. Kembali");
+      System.out.println("4. DIJKSTRA");
+      System.out.println("5. Kembali");
 
       System.out.print("Pilih: ");
       pilih = input.nextInt();
@@ -184,24 +185,35 @@ public class Main {
           System.out.print("Node tujuan: ");
           String to = input.nextLine();
 
-          // graph.addEdge(from, to);
+          System.out.print("Jarak: ");
+          int jarak = input.nextInt();
+
+          graph.tambahJalur(from, to, jarak);
           break;
 
         case 2:
           System.out.print("Mulai BFS dari: ");
           String startBFS = input.nextLine();
 
-          // graph.bfs(startBFS);
+          graph.penelusuranBFS(startBFS);
           break;
 
         case 3:
           System.out.print("Mulai DFS dari: ");
           String startDFS = input.nextLine();
 
-          // graph.dfs(startDFS);
+          graph.penelusuranDFS(startDFS);
+          break;
+        case 4:
+          System.out.print("Node awal: ");
+          String dari = input.nextLine();
+
+          System.out.print("Node tujuan: ");
+          String ke = input.nextLine();
+          graph.cariJalurTerpendek(dari, ke);
           break;
       }
 
-    } while (pilih != 4);
+    } while (pilih != 5);
   }
 }
